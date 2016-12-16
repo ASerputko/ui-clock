@@ -1,3 +1,26 @@
-<p>
-  alarm-list works!
-</p>
+<clock-header
+  (clickLeftButton)="updateEditMode($event)"
+  (clickRightButton)="addAlarm()">
+</clock-header>
+
+<div class="alarm-list flex-column">
+  <div class="alarm-item flex-row active" *ngFor="let alarm of alarms">
+    <div class="alarm-delete flex-row" *ngIf="editMode"><i class="fa fa-minus-circle fa-6" aria-hidden="true"></i></div>
+    <div class="alarm-details"
+      [ngClass]="{'edit': editMode}"
+      (click)="editMode && editAlarm(alarm)">
+      <div class="alarm-time">{{alarm.hours | twoDigits }}:{{alarm.minutes | twoDigits}}</div>
+      <div class="alarm-label">{{alarm.label}}</div>
+    </div>
+    <div class="alarm-angle-right flex-row"
+      *ngIf="editMode"
+      (click)="editAlarm(alarm)">
+      <i class="fa fa-angle-right fa-6" aria-hidden="true"></i>
+    </div>
+    <div class="alarm-switchery-container flex-row" *ngIf="!editMode">
+      <clock-alarm-switchery [active]="alarm.active" ></clock-alarm-switchery>
+    </div>
+  </div>
+</div>
+
+<clock-footer></clock-footer>

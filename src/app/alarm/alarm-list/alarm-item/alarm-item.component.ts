@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-alarm-item',
+  selector: 'clock-alarm-item',
   templateUrl: './alarm-item.component.html',
   styleUrls: ['./alarm-item.component.css']
 })

@@ -8,6 +8,8 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-phantomjs-launcher'),
+      require('karma-spec-reporter'),
       require('karma-remap-istanbul'),
       require('angular-cli/plugins/karma')
     ],
@@ -19,22 +21,24 @@ module.exports = function (config) {
     },
     remapIstanbulReporter: {
       reports: {
+        type: 'text-summary',
         html: 'coverage',
         lcovonly: './coverage/coverage.lcov'
       }
     },
     angularCli: {
       config: './angular-cli.json',
-      environment: 'dev'
+      environment: 'dev',
+      codeCoverage: true
     },
     reporters: config.angularCli && config.angularCli.codeCoverage
-              ? ['progress', 'karma-remap-istanbul']
-              : ['progress'],
+              ? ['spec', 'karma-remap-istanbul']
+              : ['spec'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: false
+    browsers: ['PhantomJS'],
+    singleRun: true
   });
 };

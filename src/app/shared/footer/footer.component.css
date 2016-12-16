@@ -1,0 +1,15 @@
+.clock-footer {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.clock-footer > div {
+    flex: 1;
+    color: #656565;
+}
+
+.clock-footer .active {
+    color: #FD9426;
+}

@@ -1,0 +1,25 @@
+<div class="clock-header flex-row">
+  <!-- Edit button -->
+  <div class="clock-header-left-button"
+    *ngIf="!editMode"
+    (click)="editAlarm()">
+    Edit
+  </div>
+
+  <!-- Done button -->
+  <div
+    *ngIf="editMode"
+    class="clock-header-left-button"
+    (click)="doneEditingAlarm()">
+    Done
+  </div>
+
+  <!-- Title -->
+  <div class="clock-header-title">Alarm</div>
+
+  <!-- Add button -->
+  <div class="clock-header-right-button"
+    (click)="addAlarm()">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </div>
+</div>
